@@ -1,0 +1,18 @@
+{
+  "generator-ngx-rocket": {
+    "version": "4.0.0",
+    "props": {
+      "appName": "nxtGenUI",
+      "target": [
+        "web"
+      ],
+      "pwa": false,
+      "ui": "bootstrap",
+      "auth": true,
+      "lazy": true,
+      "projectName": "nxt-gen-ui",
+      "packageManager": "npm",
+      "mobile": []
+    }
+  }
+}

@@ -20,7 +20,9 @@ docs/                        project docs and coding guides
 e2e/                         end-to-end tests
 src/                         project source code
 |- app/                      app components
-|  |- core/                  core module (singleton services and single-use components)
+|  |-services                include all the services
+|     +- ...
+|  |- core/                  core module (singleton services and single-use components)                        
 |  |- shared/                shared module  (common components, directives and pipes)
 |  |- app.component.*        app root component (shell)
 |  |- app.module.ts          app root module definition
@@ -109,19 +111,3 @@ Development, build and quality processes are based on [angular-cli](https://gith
 - [ngx-translate](https://github.com/ngx-translate/core)
 - [Lodash](https://lodash.com)
 
-#### Coding guides
-
-- [Angular](docs/coding-guides/angular.md)
-- [TypeScript](docs/coding-guides/typescript.md)
-- [Sass](docs/coding-guides/sass.md)
-- [HTML](docs/coding-guides/html.md)
-- [Unit tests](docs/coding-guides/unit-tests.md)
-- [End-to-end tests](docs/coding-guides/e2e-tests.md)
-
-#### Other documentation
-
-- [I18n guide](docs/i18n.md)
-- [Working behind a corporate proxy](docs/corporate-proxy.md)
-- [Updating dependencies and tools](docs/updating.md)
-- [Using a backend proxy for development](docs/backend-proxy.md)
-- [Browser routing](docs/routing.md)
