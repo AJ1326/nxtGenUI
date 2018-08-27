@@ -6,6 +6,7 @@ import { SharedModule } from '@app/shared';
 import {QuoteService} from "@app/services/quote.service";
 import {NgModule} from "@angular/core";
 import {EmitterService} from "@app/services/emitter.service";
+import {UserService} from "@app/services/user.service";
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import {EmitterService} from "@app/services/emitter.service";
   declarations: [
   ],
   providers: [
-    QuoteService, EmitterService
+    QuoteService, EmitterService, UserService
   ]
 })
 export class ServiceModule { }

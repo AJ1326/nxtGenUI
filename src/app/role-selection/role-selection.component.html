@@ -1,0 +1,30 @@
+<div class="role-container">
+  <div class="role-box">
+
+    <div class="container">
+      <div class="card col-md-6 mt-3 mx-auto" style="box-shadow: 0px 1px 0px 1px rgba(214, 214, 214, 1);">
+        <div class="card-body" style="padding: 40px 20px 20px 20px;">
+
+          <div class="row mb-50" style="font-size: 14px;">
+            <div class="col-md-12 provider-role-header">
+              Choose a role to continue.
+            </div>
+            <div class="col-md-12 provider-role-sub-header">
+              The following are all the roles associated with your account.
+            </div>
+          </div>
+
+
+          <div *ngFor="let role of roles" class="row mt-20 mb-20" style="font-size: 14px;" (click)="selectRole(role.provider_slug)">
+            <div class="col-md-12 provider-role-name">
+              {{ role.provider_name }}
+            </div>
+            <div class="col-md-12 provider-role-type">
+              {{ role.role_name }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { finalize } from 'rxjs/operators';
+import {catchError, finalize} from 'rxjs/operators';
 
 import { environment } from '@env/environment';
 import { Logger, I18nService, AuthenticationService } from '@app/core';
+import {UserService} from "@app/services/user.service";
 
 const log = new Logger('Login');
 
@@ -19,13 +20,29 @@ export class LoginComponent implements OnInit {
   error: string;
   loginForm: FormGroup;
   isLoading = false;
+  JWT: string = null;
+  JWTError: boolean = false;
+  roles = {};
+
 
   constructor(private router: Router,
+              private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private i18nService: I18nService,
-              private authenticationService: AuthenticationService) {
-    this.createForm();
+              private authenticationService: AuthenticationService,
+              private roleService: UserService) {
+        this.route.queryParams.subscribe(params => {
+          console.log(params);
+          this.JWT = params['JWT'];
+          this.JWTError = params['JWTError'];
+        });
+        if (this.JWT) {
+          this.authenticationService.saveJWT({key: 'token ' + this.JWT});
+          this.callRoles();
+        }
+        this.createForm();
   }
+
 
   ngOnInit() { }
 
@@ -63,6 +80,26 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
       remember: true
     });
+  }
+
+  private callRoles() {
+    this.isLoading = true;
+    this.roleService.getRoles({ key: this.JWT})
+      .pipe(
+        catchError((err, caught): any =>  {
+          this.router.navigate(
+            ['.'],
+            { relativeTo: this.route, queryParams: { JWTError: true} }
+          );
+        }),
+      finalize(() => { this.isLoading = false; })
+
+  )
+      .subscribe((result) => {
+        this.roles = result.roles;
+        localStorage.setItem('UserRoles', result);
+        this.router.navigateByUrl('/role-selection');
+      });
   }
 
 }

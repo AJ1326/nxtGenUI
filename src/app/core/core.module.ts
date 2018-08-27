@@ -16,6 +16,8 @@ import { HttpCacheService } from './http/http-cache.service';
 import { ApiPrefixInterceptor } from './http/api-prefix.interceptor';
 import { ErrorHandlerInterceptor } from './http/error-handler.interceptor';
 import { CacheInterceptor } from './http/cache.interceptor';
+import {AppOnlyLogoHeaderComponent} from "./only-logo-shell/header/app-only-logo-header.component";
+import {OnlyLogoShellComponent} from "./only-logo-shell/only-logo-shell.component";
 
 @NgModule({
   imports: [
@@ -27,7 +29,9 @@ import { CacheInterceptor } from './http/cache.interceptor';
   ],
   declarations: [
     HeaderComponent,
-    ShellComponent
+    ShellComponent,
+    AppOnlyLogoHeaderComponent,
+    OnlyLogoShellComponent
   ],
   providers: [
     AuthenticationService,

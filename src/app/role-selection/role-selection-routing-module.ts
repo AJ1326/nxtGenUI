@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { extract } from '@app/core';
-import { LoginComponent } from './login.component';
+import { RoleSelectionComponent } from './role-selection.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-
-  { path: 'login', component: LoginComponent, data: { title: extract('Login') } }
+  { path: '', component: RoleSelectionComponent, data: { title: extract('Roles') } }
 ];
 
 @NgModule({
@@ -15,4 +13,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class LoginRoutingModule { }
+export class RoleSelectionRoutingModule { }

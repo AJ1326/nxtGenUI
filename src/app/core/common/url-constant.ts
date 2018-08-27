@@ -12,6 +12,7 @@ export const URL: string  = environment.serverUrl;
 
 export const URLS = {
 
-  PROVIDER : "/musictrack/",
+  PROVIDER : `/musictrack/`,
+  GET_ROLES: `/api/user/roles/`,
 
 };

@@ -1,6 +1,7 @@
 <div class="login-container bg-light">
   <div class="login-box">
     <h1 translate>APP_NAME</h1>
+
     <div>
       <h6 class="d-inline-block">v{{version}}</h6>
       <div class="d-inline-block ml-3" ngbDropdown>
@@ -16,7 +17,10 @@
     </div>
     <div class="container">
       <div class="card col-md-6 mt-3 mx-auto">
-        <div class="card-body">
+        <div *ngIf="JWTError" class="card-body">
+          <span>JWT authentication failed please login to continue.</span>
+        </div>
+        <div *ngIf="!isLoading" class="card-body">
           <h4 class="card-title text-center">
             <i class="far fa-3x fa-user-circle text-muted"></i>
           </h4>
@@ -55,6 +59,10 @@
               <span translate>Login</span>
             </button>
           </form>
+        </div>
+
+        <div *ngIf="isLoading" class="card-body">
+          <span>Logging you in.</span>
         </div>
       </div>
     </div>

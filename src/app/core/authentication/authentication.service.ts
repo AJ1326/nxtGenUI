@@ -7,14 +7,23 @@ export interface Credentials {
   username: string;
   token: string;
 }
+export interface JWTKey {
+  // Customize received credentials here
+  key: string;
+
+}
 
 export interface LoginContext {
   username: string;
   password: string;
   remember?: boolean;
 }
+export interface JWTContext {
+  key: string;
+}
 
 const credentialsKey = 'credentials';
+const JWTKey = 'JWT';
 
 /**
  * Provides a base for authentication workflow.
@@ -24,6 +33,7 @@ const credentialsKey = 'credentials';
 export class AuthenticationService {
 
   private _credentials: Credentials | null;
+  private _JWT: JWTKey | null;
 
   constructor() {
     const savedCredentials = sessionStorage.getItem(credentialsKey) || localStorage.getItem(credentialsKey);
@@ -45,7 +55,29 @@ export class AuthenticationService {
     };
     this.setCredentials(data, context.remember);
     return of(data);
+
   }
+  /**
+   * Authenticates the user using JWT.
+   * @param {JWTContext} context The login parameters.
+   * @return {Observable<Credentials>} The user credentials.
+   */
+  saveJWT(context: JWTContext): Observable<JWTContext> {
+    // Replace by proper authentication call
+    const storage = localStorage;
+    this._JWT = {'key': context.key}
+    storage.setItem('JWT', context.key);
+    return of(context);
+  }
+
+
+  getJWT(): Observable<string> {
+    // Replace by proper authentication call
+    const storage = localStorage;
+    let key = storage.getItem(JWTKey) || null;
+    return of(key);
+  }
+
 
   /**
    * Logs out the user and clear credentials.
@@ -62,7 +94,7 @@ export class AuthenticationService {
    * @return {boolean} True if the user is authenticated.
    */
   isAuthenticated(): boolean {
-    return !!this.credentials;
+    return !!this.credentials || !!this.getJWT();
   }
 
   /**

@@ -13,6 +13,7 @@ import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
 import { ServiceModule } from "@app/services/services.module";
 import {NgModule} from "@angular/core";
 import { StorageServiceModule } from 'angular-webstorage-service';
+import { RoleSelectionModule } from './role-selection/role-selection.module';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { StorageServiceModule } from 'angular-webstorage-service';
     AppRoutingModule,
     NgProgressModule,
     ServiceModule,
-    StorageServiceModule
+    StorageServiceModule,
+    RoleSelectionModule
   ],
   declarations: [AppComponent],
   providers: [
