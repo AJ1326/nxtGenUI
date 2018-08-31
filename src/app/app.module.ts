@@ -5,7 +5,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
 import { HomeModule } from './home/home.module';
-import { LoginModule } from './login/login.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -14,6 +13,7 @@ import { ServiceModule } from "@app/services/services.module";
 import {NgModule} from "@angular/core";
 import { StorageServiceModule } from 'angular-webstorage-service';
 import { RoleSelectionModule } from './role-selection/role-selection.module';
+import {LoginModule} from "@app/login/login.module";
 
 @NgModule({
   imports: [

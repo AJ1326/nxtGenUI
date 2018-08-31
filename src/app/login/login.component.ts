@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isLoading = false;
   JWT: string = null;
-  JWTError: boolean = false;
+  JWTError = false;
   roles = {};
 
 
@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
               private authenticationService: AuthenticationService,
               private roleService: UserService) {
         this.route.queryParams.subscribe(params => {
-          console.log(params);
           this.JWT = params['JWT'];
           this.JWTError = params['JWTError'];
         });

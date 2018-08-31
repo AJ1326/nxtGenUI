@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable ,  of } from 'rxjs';
 
 export interface Credentials {
   // Customize received credentials here
@@ -65,7 +64,7 @@ export class AuthenticationService {
   saveJWT(context: JWTContext): Observable<JWTContext> {
     // Replace by proper authentication call
     const storage = localStorage;
-    this._JWT = {'key': context.key}
+    this._JWT = {'key': context.key};
     storage.setItem('JWT', context.key);
     return of(context);
   }
